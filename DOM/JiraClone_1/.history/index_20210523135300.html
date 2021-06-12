@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<style>
+    * {
+  box-sizing: border-box;
+}
+body {
+  margin: 0;
+}
+
+.container {
+  height: 100vh;
+  width: 100vw;
+}
+
+.navbar {
+  background-color: #333333;
+  height: 12%;
+  display: flex;
+}
+
+.grid {
+  background-color: #f2f2f2;
+  height: 88%;
+}
+
+.filter-container,
+.action-container{
+height: 75%;
+border-radius: 2px;
+width: 10rem;
+margin-left: 3.5rem;
+background-color: #444444;
+margin-top: 1.5vh;
+
+}
+.filter-container{
+
+    width: 10rem;
+    display: flex;
+}
+.action-container{
+    width: 7rem;
+}
+
+.filter{
+    border: 1px solid red;
+    width: 25%;
+    height:100%;
+}
+</style>
+<body>
+    <div class="container">
+        <div class="navbar">
+           <div class="filter-container">
+               <div class="filter"><div class="pink-color-btn"></div>
+               <div class="filter"><div class="blue-color-btn"></div>
+               <div class="filter"><div class="pink-color-btn"></div>
+               <div class="filter"><div class="pink-color-btn"></div>
+           </div> 
+           <div class="action-container"></div>
+        </div>
+        <div class="grid"></div>
+        
+    </div>
+</body>
+</html>
