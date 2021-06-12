@@ -124,15 +124,8 @@ addBtn.addEventListener("click", function () {
 
 for (let i = 0; i < allFilters.length; i++) {
   allFilters[i].addEventListener("click", function (e) {
-    if (e.currentTarget.parentElement.classList.contains("selected-filter")) {
-      e.currentTarget.parentElement.classList.remove("selected-filter");
-      loadTasks();
-    } else {
-      let color = e.currentTarget.classList[0].split("-")[0];
-      e.currentTarget.parentElement.classList.add("selected-filter");
-      console.log(color);
-      loadTasks(color);
-    }
+    let color = e.currentTarget.classList[0].split("-")[0];
+    grid.style.backgroundColor = colors[color];
   });
 }
 
@@ -184,20 +177,12 @@ function ticketWritingAreaHandler(e) {
   localStorage.setItem("tasks", JSON.stringify(tasksArr));
 }
 
-function loadTasks(passedColor) {
-  //agr koi ticket ui pr pehle se hai use remove kr rhe hai
-  let allTickets = document.querySelectorAll(".ticket");
-  for (let t = 0; t < allTickets.length; t++) allTickets[t].remove();
-
+function loadTasks() {
   let tasks = JSON.parse(localStorage.getItem("tasks"));
   for (let i = 0; i < tasks.length; i++) {
     let id = tasks[i].id;
     let color = tasks[i].color;
     let taskValue = tasks[i].task;
-
-    if (passedColor) {
-      if (passedColor != color) continue;
-    }
 
     let ticket = document.createElement("div");
     ticket.classList.add("ticket");
@@ -236,5 +221,4 @@ function loadTasks(passedColor) {
   }
 }
 
-//refresh/ app re-open
 loadTasks();
