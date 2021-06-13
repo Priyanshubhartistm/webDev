@@ -20,19 +20,19 @@
     let capBtn = document.querySelector("#capture");
     let mediaRecorder;
     let chunks = [];
-
     startBtn.addEventListener("click", function () {
       //recording start
       mediaRecorder.start();
     });
-
     stopBtn.addEventListener("click", function () {
       //recording stop
       mediaRecorder.stop();
     });
 
     capBtn.addEventListener("click", function () {
+
       //screen Image saved
+
       let canvas = document.createElement("canvas");
       canvas.width = video.videoWidth;
       canvas.height = video.videoHeight;
@@ -48,6 +48,9 @@
       canvas.remove();
 
     });
+
+
+
 
 
     navigator.mediaDevices

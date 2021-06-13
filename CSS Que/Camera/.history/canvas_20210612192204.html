@@ -12,25 +12,18 @@
         }
         body{
             margin: 0;
-            /* overflow: hidden; */
+           // overflow: hidden;
         }
     </style>
 </head>
 <body>
     <canvas> </canvas>
-    <img src = "image1.jpg">
     <script> 
     let canvas = document.querySelector("canvas");
-    let img = document.querySelector("img");
-
     canvas.width = window.innerWidth
     canvas.height = window.innerHeight
 
     let tool = canvas.getContext("2d");
-
-    img.addEventListener("load",function(){
-        tool.drawImage(img,0,0);
-    })
 
    // tool.moveTo(0,0);
 
