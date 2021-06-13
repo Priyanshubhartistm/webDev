@@ -67,28 +67,21 @@
 
 
 
-    capBtn.addEventListener("click", function () {
+    //jobhi image screen pr dikhara use save krwana
+    let canvas = document.createElement("canvas");
+    canvas.width = video.videoWidth;
+    canvas.height = video.videoHeight;
+    let tool = canvas.getContext("2d");
+    tool.drawImage(video, 0, 0);
 
-      capDiv.classList.add("capture-animation")
-      setTimeout(function () {
-        capDiv.classList.remove("capture-animation")
-      }, 1000)
-
-      //jobhi image screen pr dikhara use save krwana
-      let canvas = document.createElement("canvas");
-      canvas.width = video.videoWidth;
-      canvas.height = video.videoHeight;
-      let tool = canvas.getContext("2d");
-      tool.drawImage(video, 0, 0);
-
-      let link = canvas.toDataURL();
-      let a = document.createElement("a");
-      a.href = link;
-      a.download = "img.png";
-      a.click();
-      a.remove();
-      canvas.remove()
-    });
+    let link = canvas.toDataURL();
+    let a = document.createElement("a");
+    a.href = link;
+    a.download = "img.png";
+    a.click();
+    a.remove();
+    canvas.remove()
+      });
 
     navigator.mediaDevices
       .getUserMedia({ video: true, audio: true })

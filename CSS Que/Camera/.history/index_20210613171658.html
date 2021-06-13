@@ -6,39 +6,26 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Document</title>
-  <link rel="stylesheet" href="style.css">
 </head>
 
 <body>
-  <div id="video-container">
-    <video autoplay></video>
-
-  </div>
-
-  <button id="record">
-    <div></div>
-  </button>
-  <button id="capture">
-    <div></div>
-  </button>
+  <video controls autoplay></video>
 
   <!-- <button id="start">Start</button>
   <button id="stop">Stop</button>
   <button id="capture">Capture</button> -->
 
 
+  <button id="record">Start</button>
+  <button id="capture">Capture</button>
 
+  
   <script>
     let video = document.querySelector("video");
-
     // let startBtn = document.querySelector("#start");
     // let stopBtn = document.querySelector("#stop");
-
     let recordBtn = document.querySelector("#record");
-    let recDiv = recordBtn.querySelector("div")
     let capBtn = document.querySelector("#capture");
-    let capDiv = capBtn.querySelector("div")
-
     let mediaRecorder;
     let isRecording = false;
     let chunks = [];
@@ -48,33 +35,28 @@
     //   mediaRecorder.start();
     // });
 
-    // stopBtn.addEventListener("click", function () {
-    //   //recording stop
-    //   mediaRecorder.stop();
-    // });
-
-    recordBtn.addEventListener("click", function (e) {
-      if (isRecording) {
+ recordBtn.addEventListener("click", function (e) {
+      if(isRecording){
         mediaRecorder.stop()
         isRecording = false
-        recDiv.classList.remove("record-animation")
-      } else {
-        mediaRecorder.start()
-        isRecording = true
-        recDiv.classList.add("record-animation")
+        e.currentTarget.innerText = "start"
       }
-    })
+      else{
+        
+        mediaRecorder.start();
+        isRecording = true;
+        e.currentTarget.innerText
+      }
+    });
 
 
+    stopBtn.addEventListener("click", function () {
+      //recording stop
+      mediaRecorder.stop();
+    });
 
     capBtn.addEventListener("click", function () {
-
-      capDiv.classList.add("capture-animation")
-      setTimeout(function () {
-        capDiv.classList.remove("capture-animation")
-      }, 1000)
-
-      //jobhi image screen pr dikhara use save krwana
+      //Screen  Display Image Saved
       let canvas = document.createElement("canvas");
       canvas.width = video.videoWidth;
       canvas.height = video.videoHeight;
@@ -84,17 +66,20 @@
       let link = canvas.toDataURL();
       let a = document.createElement("a");
       a.href = link;
-      a.download = "img.png";
+      a.download = "img.jpg";
       a.click();
       a.remove();
-      canvas.remove()
+      canvas.remove();
+
     });
+
 
     navigator.mediaDevices
       .getUserMedia({ video: true, audio: true })
       .then(function (mediaStream) {
+        let options = { mimeType: "video/mp4" };
 
-        mediaRecorder = new MediaRecorder(mediaStream);
+        mediaRecorder = new MediaRecorder(mediaStream, options);
 
         mediaRecorder.addEventListener("dataavailable", function (e) {
           chunks.push(e.data);
