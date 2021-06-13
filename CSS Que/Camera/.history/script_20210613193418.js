@@ -1,9 +1,7 @@
-
 let video = document.querySelector("video");
 
 // let startBtn = document.querySelector("#start");
 // let stopBtn = document.querySelector("#stop");
-
 let recordBtn = document.querySelector("#record");
 let recDiv = recordBtn.querySelector("div")
 let capBtn = document.querySelector("#capture");
@@ -35,8 +33,10 @@ recordBtn.addEventListener("click", function (e) {
     }
 })
 
+
+
 capBtn.addEventListener("click", function () {
-    
+
     // if{ isRecording = true
     //     return;
     // }
@@ -88,4 +88,3 @@ navigator.mediaDevices
     .catch(function (err) {
         console.log(err);
     });
-

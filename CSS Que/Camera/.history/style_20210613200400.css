@@ -85,7 +85,7 @@ video{
 
 .filter-container{
     width: 6rem;
-    height: 50vh;
+    height: 20vh;
     border: 1px solid white;
     position: fixed;
     top: 20vh;

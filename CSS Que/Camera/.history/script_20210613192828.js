@@ -35,8 +35,9 @@ recordBtn.addEventListener("click", function (e) {
     }
 })
 
+
+
 capBtn.addEventListener("click", function () {
-    
     // if{ isRecording = true
     //     return;
     // }
@@ -88,4 +89,3 @@ navigator.mediaDevices
     .catch(function (err) {
         console.log(err);
     });
-

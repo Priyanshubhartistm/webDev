@@ -35,11 +35,11 @@ recordBtn.addEventListener("click", function (e) {
     }
 })
 
+
+
 capBtn.addEventListener("click", function () {
-    
-    // if{ isRecording = true
-    //     return;
-    // }
+    if{ isRecording = true
+    }
 
     capDiv.classList.add("capture-animation")
     setTimeout(function () {
@@ -88,4 +88,3 @@ navigator.mediaDevices
     .catch(function (err) {
         console.log(err);
     });
-

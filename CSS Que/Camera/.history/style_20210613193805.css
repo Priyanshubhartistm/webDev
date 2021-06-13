@@ -7,7 +7,11 @@ body{
     background-color: black;
 }
 
-
+#filter{
+    height:80%;
+    width: 34%;
+    colo
+}
 
 
 
@@ -80,25 +84,4 @@ video{
         transform: scale(1);
 
     }
-}
-
-
-.filter-container{
-    width: 6rem;
-    height: 50vh;
-    border: 1px solid white;
-    position: fixed;
-    top: 20vh;
-    left: 20px;
-    
-
-}
-
-.filter{
-    width: 100%;
-    height: calc( 100% / 6 );
-    border: 1px solid white;
-    background-image: url(https://latticenepal.com/wp-content/uploads/2020/06/nature.jpg);
-    background-size: cover;
-
 }

@@ -46,6 +46,8 @@ capBtn.addEventListener("click", function () {
         capDiv.classList.remove("capture-animation")
     }, 1000)
 
+
+
     //Screen Display Image Save
     let canvas = document.createElement("canvas");
     canvas.width = video.videoWidth;
@@ -88,4 +90,3 @@ navigator.mediaDevices
     .catch(function (err) {
         console.log(err);
     });
-
