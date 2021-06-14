@@ -67,11 +67,6 @@ capBtn.addEventListener("click", function () {
     let tool = canvas.getContext("2d");
     tool.drawImage(video, 0, 0);
 
-    if(appliedFilter){
-        tool.fillStyle = appliedFilter;
-        tool.fillRect(0,0,canvas.width,canvas.height);
-    }
-
     let link = canvas.toDataURL();
     let a = document.createElement("a");
     a.href = link;
@@ -108,9 +103,6 @@ navigator.mediaDevices
         console.log(err);
 
 
-        function removeFilter(){
-            let Filter = document.querySelector("filter");
-            if(Filter) Filter.remove();
-        }
+        functio
     });
 

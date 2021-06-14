@@ -22,7 +22,7 @@ for(let i=0; i<filter.length;i++){
         let div = document.createElement("div");
         div.style.backgroundColor = appliedFilter;
         div.classList.add("filter-div");
-        body.append(div);
+        body.append
 
     })
 }
@@ -67,11 +67,6 @@ capBtn.addEventListener("click", function () {
     let tool = canvas.getContext("2d");
     tool.drawImage(video, 0, 0);
 
-    if(appliedFilter){
-        tool.fillStyle = appliedFilter;
-        tool.fillRect(0,0,canvas.width,canvas.height);
-    }
-
     let link = canvas.toDataURL();
     let a = document.createElement("a");
     a.href = link;
@@ -106,11 +101,5 @@ navigator.mediaDevices
     })
     .catch(function (err) {
         console.log(err);
-
-
-        function removeFilter(){
-            let Filter = document.querySelector("filter");
-            if(Filter) Filter.remove();
-        }
     });
 

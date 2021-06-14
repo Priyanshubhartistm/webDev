@@ -69,7 +69,7 @@ capBtn.addEventListener("click", function () {
 
     if(appliedFilter){
         tool.fillStyle = appliedFilter;
-        tool.fillRect(0,0,canvas.width,canvas.height);
+        tool.fillRect(0,0,canvas.wid)
     }
 
     let link = canvas.toDataURL();

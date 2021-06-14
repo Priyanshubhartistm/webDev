@@ -67,10 +67,7 @@ capBtn.addEventListener("click", function () {
     let tool = canvas.getContext("2d");
     tool.drawImage(video, 0, 0);
 
-    if(appliedFilter){
-        tool.fillStyle = appliedFilter;
-        tool.fillRect(0,0,canvas.width,canvas.height);
-    }
+    if(app)
 
     let link = canvas.toDataURL();
     let a = document.createElement("a");
