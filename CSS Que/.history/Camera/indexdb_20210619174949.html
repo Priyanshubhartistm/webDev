@@ -35,8 +35,8 @@ give an error to user else save in indexedDB -->
             let accessToNotesDB = req.result;
 
             accessToNotesDB.createObjectStore("placementNotes",{keyPath:"pId"})
-            accessToNotesDB.createObjectStore("generalNotes",{keyPath:"gId"})
-            accessToNotesDB.createObjectStore("collegeNotes",{keyPath:"cId"})
+            accessToNotesDB.createObjectStore("generalNotes",{keyPath:"nId"})
+            accessToNotesDB.createObjectStore("collegeNotes",{keyPath:"nId"})
             //I can create an object store.
             //alert("db was updated/created successfully");
 

@@ -8,23 +8,15 @@
     <title>Document</title>
 </head>
 
-<!-- Task
-To make Notes App => generalNotes, placementNotes, collegeNotes
-1 Dropdown, 2 inputboxes (1 for title of the notes and 2nd for content)
-submit button, Get dom ref in script, add an event Listener on submit button,
-when we clicked get title and content and category from drop down if anything is missing
-give an error to user else save in indexedDB -->
-
 <body>
     <script>
 
-        let req = indexedDB.open("NotesDB", 2);    // 1 is version here
+        let req = indexedDB.open("NotesDB", 3);    // 1 is version here
         //indexedDB.open("Name-of-DB", version-of-db);
 
         req.addEventListener("success", function () {
             let accessToNotesDB = req.result;
             //alert("db was opened successfully");
-
         });
 
         //upgrade event occurs in 2 cases
@@ -33,18 +25,12 @@ give an error to user else save in indexedDB -->
 
         req.addEventListener("upgradeneeded", function () {
             let accessToNotesDB = req.result;
-
-            accessToNotesDB.createObjectStore("placementNotes",{keyPath:"pId"})
-            accessToNotesDB.createObjectStore("generalNotes",{keyPath:"gId"})
-            accessToNotesDB.createObjectStore("collegeNotes",{keyPath:"cId"})
             //I can create an object store.
-            //alert("db was updated/created successfully");
-
+            alert("db was updated/created successfully");
         });
 
         req.addEventListener("error", function () {
-            //alert("Error in creation/opening");
-
+            alert("Error in creation/opening");
         });
 
 
