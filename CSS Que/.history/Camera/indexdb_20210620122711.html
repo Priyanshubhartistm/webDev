@@ -63,7 +63,7 @@ give an error to user else save in indexedDB -->
     <input id="content" /> <br>
 
     <button id="submit">Submit</button>
-
+    
     <hr />
     <button id="placement">View placementNotes</button>
     <button id="college">View collegeNotes</button>
@@ -122,6 +122,11 @@ give an error to user else save in indexedDB -->
 
         });
 
+
+
+
+
+
         let req = indexedDB.open("NotesDB", 1);    // 1 is version here
         //indexedDB.open("Name-of-DB", version-of-db);
 
@@ -147,6 +152,8 @@ give an error to user else save in indexedDB -->
             //alert("db was updated/created successfully");
 
         });
+
+
 
         req.addEventListener("error", function () {
             //alert("Error in creation/opening");
@@ -186,11 +193,18 @@ give an error to user else save in indexedDB -->
             });
         }
 
-        //   Task is create 3 buttons
-        //   view placement notes
-        //   view college notes
-        //   view general notes
+      //   Task is create 3 buttons
+      //   view placement notes
+      //   view college notes
+      //   view general notes
+
+
     </script>
+
+
+
+
+
 
 </body>
 

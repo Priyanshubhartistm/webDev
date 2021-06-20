@@ -1,0 +1,151 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<style>
+    * {
+        box-sizing: border-box;
+    }
+
+    body {
+        margin: 0;
+    }
+
+    select {
+        display: block;
+        height: 2rem;
+        width: 7rem;
+        margin: auto;
+    }
+
+    #title {
+        display: block;
+        margin: auto;
+        height: 2rem;
+        width: 20rem;
+    }
+
+    #content {
+        display: block;
+        margin: auto;
+        width: 25rem;
+        height: 15rem;
+    }
+
+    button {
+        display: block;
+        margin: auto;
+    }
+</style>
+
+<!-- Task
+To make Notes App => generalNotes, placementNotes, collegeNotes
+1 Dropdown, 2 inputboxes (1 for title of the notes and 2nd for content)
+submit button, Get dom ref in script, add an event Listener on submit button,
+when we clicked get title and content and category from drop down if anything is missing
+give an error to user else save in indexedDB -->
+
+<body>
+
+    <select>
+        <option value="generalNotes">generalNotes</option>
+        <option value="placementNotes">placementNotes</option>
+        <option value="collegeNotes">collegeNotes</option>
+    </select> <br>
+
+    <input id="title" placeholder="Title" /> <br>
+    <input id="content" /> <br>
+
+    <button id="submit">Submit</button>
+
+    
+    <script>
+
+        let db;
+        let submitBtn = document.querySelector("button")
+        let title = document.querySelector("#title")
+        let content = document.querySelector("#content")
+        let select = document.querySelector("select")
+        submitBtn.addEventListener ("click", function(){
+            if(content.value == "" || title.value==""){
+                alert("please enter title and content") 
+                return;
+            }else{
+               let collectionName = select.value;
+               let obj = {};
+
+               if(collectionName == "placementNotes"){
+                   obj.pId=Date.now();
+               }
+               if(collectionName == "generalNotes"){
+                   obj.pId=Date.now();
+               }
+               if(collectionName == "collegeNotes"){
+                   obj.pId=Date.now();
+               }
+
+               obj.title = title.value;
+               
+            }
+        });
+
+        let req = indexedDB.open("NotesDB", 1);    // 1 is version here
+        //indexedDB.open("Name-of-DB", version-of-db);
+
+        req.addEventListener("success", function () {
+            //let accessToNotesDB = req.result;
+
+             db = req.result;
+             //alert("db was opened successfully");
+             //addNote("placementNotes")
+
+            });
+            
+            
+
+
+        //upgrade event occurs in 2 cases
+        //case1: when we  create new db
+        //case2: when you try to open a database which already existed with a incremented  version 
+
+        req.addEventListener("upgradeneeded", function () {
+            let accessToNotesDB = req.result;
+            accessToNotesDB.createObjectStore("placementNotes", { keyPath: "pId" })
+            accessToNotesDB.createObjectStore("generalNotes", { keyPath: "gId" })
+            accessToNotesDB.createObjectStore("collegeNotes", { keyPath: "cId" })
+            //I can create an object store.
+            //alert("db was updated/created successfully");
+
+        });
+
+        req.addEventListener("error", function () {
+            //alert("Error in creation/opening");
+
+        });
+
+        function addNote(collectionName,obj){
+            if(!db)
+             return
+
+            // let obj = {
+            //     pId:123455,title:"abc",content:"xyz"
+            // }
+            
+            let tx = db.transaction(collectionName,"readwrite")
+            let reqObjectStore = tx.objectStore(collectionName)
+            reqObjectStore.add(obj)
+            
+        }
+
+    </script>
+
+
+</body>
+
+</html>

@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<!-- Task
+To make Notes App => generalNotes, placementNotes, collegeNotes
+1 Dropdown, 2 inputboxes (1 for title of the notes and 2nd for content)
+submit button, Get dom ref in script, add an event Listener on submit button,
+when we clicked get title and content and category from drop down if anything is missing
+give an error to user else save in indexedDB -->
+
+<body>
+
+ <select>
+     <option value="gen">generalNotes</option>
+     <option value="pl">placementNotes</option>
+     <option value="cll">collegeNotes</option>
+    </select>
+
+    <inpuy
+
+
+    
+
+    
+         
+
+    
+    <script>
+        let req = indexedDB.open("NotesDB", 2);    // 1 is version here
+        //indexedDB.open("Name-of-DB", version-of-db);
+
+        req.addEventListener("success", function () {
+            let accessToNotesDB = req.result;
+            //alert("db was opened successfully");
+
+        });
+
+        //upgrade event occurs in 2 cases
+        //case1: when we  create new db
+        //case2: when you try to open a database which already existed with a incremented  version 
+
+        req.addEventListener("upgradeneeded", function () {
+            let accessToNotesDB = req.result;
+
+            accessToNotesDB.createObjectStore("placementNotes",{keyPath:"pId"})
+            accessToNotesDB.createObjectStore("generalNotes",{keyPath:"gId"})
+            accessToNotesDB.createObjectStore("collegeNotes",{keyPath:"cId"})
+            //I can create an object store.
+            //alert("db was updated/created successfully");
+
+        });
+
+        req.addEventListener("error", function () {
+            //alert("Error in creation/opening");
+
+        });
+
+        </script>
+
+
+</body>
+
+</html>

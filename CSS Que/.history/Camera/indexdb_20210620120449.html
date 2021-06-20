@@ -64,64 +64,69 @@ give an error to user else save in indexedDB -->
 
     <button id="submit">Submit</button>
 
+
     <hr />
+
     <button id="placement">View placementNotes</button>
     <button id="college">View collegeNotes</button>
     <button id="general">View generalNotes</button>
+
     <ul></ul>
+
 
 
     <script>
 
-        let db;
-        let ul = document.querySelector("ul");
-        let submitBtn = document.querySelector("#submit");
-        let placementBtn = document.querySelector("#placement");
-        let collegeBtn = document.querySelector("#college");
-        let generalBtn = document.querySelector("#general");
+      let db;
+      let ul = document.querySelector("ul");
+      let submitBtn = document.querySelector("#submit");
+      let placementBtn = document.querySelector("#placement");
+      let collegeBtn = document.querySelector("#college");
+      let generalBtn = document.querySelector("#general");
 
-        let title = document.querySelector("#title");
-        let content = document.querySelector("#content");
-        let select = document.querySelector("select");
+      let title = document.querySelector("#title");
+      let content = document.querySelector("#content");
+      let select = document.querySelector("select");
 
-        placementBtn.addEventListener("click", function () {
-            viewNotes("placementNotes");
+      placementBtn.addEventListener("click", function () {
+        viewNotes("placementNotes");
+      });
+
+      collegeBtn.addEventListener("click", function () {
+        viewNotes("collegeNotes");
+      });
+
+      generalBtn.addEventListener("click", function () {
+        viewNotes("generalNotes");
+      });
+
+
+      submitBtn.addEventListener("click", function () {
+          if (content.value == "" || title.value == "") {
+              alert("please enter title and content")
+              return;
+          } else {
+              let collectionName = select.value;
+              let obj = {};
+              if (collectionName == "placementNotes") {
+                  obj.pId = Date.now();
+              }
+              if (collectionName == "generalNotes") {
+                  obj.gId = Date.now();
+              }
+              if (collectionName == "collegeNotes") {
+                  obj.cId = Date.now();
+              }
+
+              obj.title = title.value;
+              obj.content = content.value;
+
+              addNote(collectionName, obj);
+          }
+          
         });
 
-        collegeBtn.addEventListener("click", function () {
-            viewNotes("collegeNotes");
-        });
-
-        generalBtn.addEventListener("click", function () {
-            viewNotes("generalNotes");
-        });
-
-
-        submitBtn.addEventListener("click", function () {
-            if (content.value == "" || title.value == "") {
-                alert("please enter title and content")
-                return;
-            } else {
-                let collectionName = select.value;
-                let obj = {};
-                if (collectionName == "placementNotes") {
-                    obj.pId = Date.now();
-                }
-                if (collectionName == "generalNotes") {
-                    obj.gId = Date.now();
-                }
-                if (collectionName == "collegeNotes") {
-                    obj.cId = Date.now();
-                }
-
-                obj.title = title.value;
-                obj.content = content.value;
-
-                addNote(collectionName, obj);
-            }
-
-        });
-
+        
         let req = indexedDB.open("NotesDB", 1);    // 1 is version here
         //indexedDB.open("Name-of-DB", version-of-db);
 
@@ -133,7 +138,6 @@ give an error to user else save in indexedDB -->
             //addNote("placementNotes")
 
         });
-
         //upgrade event occurs in 2 cases
         //case1: when we  create new db
         //case2: when you try to open a database which already existed with a incremented  version 
@@ -148,6 +152,13 @@ give an error to user else save in indexedDB -->
 
         });
 
+
+
+
+
+
+
+
         req.addEventListener("error", function () {
             //alert("Error in creation/opening");
 
@@ -155,42 +166,33 @@ give an error to user else save in indexedDB -->
 
         function addNote(collectionName, obj) {
             if (!db) return;
+            let tx = db.transaction(collectionName, "readwrite")
+            let reqObjectStore = tx.objectStore(collectionName)
+            reqObjectStore.add(obj)
 
-            let tx = db.transaction(collectionName, "readwrite");
-            let reqObjectStore = tx.objectStore(collectionName);
-            reqObjectStore.add(obj);
         }
 
         function viewNotes(collectionName) {
             if (!db) return;
+            let tx = db.transaction(collectionName, "readonly")
+            let reqObjectStore = tx.objectStore(collectionName)
 
-            let tx = db.transaction(collectionName, "readonly");
-            let reqObjectStore = tx.objectStore(collectionName);
-
-            let cursorReq = reqObjectStore.openCursor();
-
-
-            let oldLis = ul.querySelectorAll("li")
-            for (let i = 0; i < oldLis.length; i++) {
-                oldLis[i].remove()
-            }
+            let cursorReq = reqObjectStore.openCursor()
 
             cursorReq.addEventListener("success", function () {
                 let cursor = cursorReq.result;
                 if (cursor) {
-                    let li = document.createElement("li");
-                    li.innerHTML = `<div>${cursor.value.title}</div><div>${cursor.value.content}</div><br>`;
-                    ul.append(li)
+                    console.log(cursor.value);
                     cursor.continue();
                 }
-            });
+            })
+
+
+
         }
 
-        //   Task is create 3 buttons
-        //   view placement notes
-        //   view college notes
-        //   view general notes
     </script>
+
 
 </body>
 
