@@ -41,7 +41,7 @@ for (let i = 1; i <= 100; i++) {
 }
 
 
-//For Grid
+//
 let grid = document.querySelector(".grid");
 for (let j = 1; j <= 100; j++) {
   let row = document.createElement("div");
