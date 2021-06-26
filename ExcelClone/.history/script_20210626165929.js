@@ -75,7 +75,7 @@ for (let j = 1; j <= 100; j++) {
       formulaSelectCell.value = cellAddress;
 
       //and ab jo naya cell select hogya use save krdo old cell wali variable taki next time agr click ho kisi nye cell pr to ise deselect kr pai
-      oldCell = e.currentTarget;
+      //oldCell = e.currentTarget;
     });
 
     cell.contentEditable = true;

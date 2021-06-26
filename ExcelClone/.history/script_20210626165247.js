@@ -47,7 +47,7 @@ for (let j = 1; j <= 100; j++) {
   let row = document.createElement("div");
   row.classList.add("row");
 
-  //j = 100
+   //j = 100
   //i = 0; i + 65 => 65(A)  ==> A100
   //i = 1; i + 65 => 66(B)  ==> B1
 
@@ -58,27 +58,29 @@ for (let j = 1; j <= 100; j++) {
     cell.classList.add("cell");
     cell.setAttribute("data-address", String.fromCharCode(i + 65) + j);
 
-    // Cell selection & De-Selection 
-    let formulaSelectCell = document.querySelector("#select-cell");
-    let oldCell;
-    cell.addEventListener("click", function (e) {
-      //check kro koi old cell hai kya pehli se selected
-      if (oldCell) {
-        // agr han to use deselect kro class remove krke
-        oldCell.classList.remove("grid-selected-cell");
-      }
-      //jis cell pr click kra use select kro class add krke
-      e.currentTarget.classList.add("grid-selected-cell");
+// Cell selection & De-Selection 
+let formulaSelectCell = document.querySelector("#select-cell");
+let oldCell;
+cell.addEventListener("click", function (e) {
+  //check kro koi old cell hai kya pehli se selected
+  if (oldCell) {
+    // agr han to use deselect kro class remove krke
+    oldCell.classList.remove("grid-selected-cell");
+  }
+  //jis cell pr click kra use select kro class add krke
+  e.currentTarget.classList.add("grid-selected-cell");
 
-      let cellAddress = e.currentTarget.getAttribute("data-address");
+  let cellAddress = e.currentTarget.getAttribute("data-address");
 
-      formulaSelectCell.value = cellAddress;
+  formulaSelectCell.value = cellAddress;
 
-      //and ab jo naya cell select hogya use save krdo old cell wali variable taki next time agr click ho kisi nye cell pr to ise deselect kr pai
-      oldCell = e.currentTarget;
-    });
+  //and ab jo naya cell select hogya use save krdo old cell wali variable taki next time agr click ho kisi nye cell pr to ise deselect kr pai
+  oldCell = e.currentTarget;
+});
 
-    cell.contentEditable = true;
+
+
+    cell.contentEditable = true
     row.append(cell);
   }
   grid.append(row)
