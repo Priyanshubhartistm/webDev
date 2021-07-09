@@ -82,10 +82,9 @@ let a = {
 };
 
 let{
-  x:{z} } = a;
+  x:{z} =
 
-  console.log(a);
-  console.log(z);
+}
 
        
 

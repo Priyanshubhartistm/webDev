@@ -84,8 +84,8 @@ let a = {
 let{
   x:{z} } = a;
 
-  console.log(a);
-  console.log(z);
+  console.log()
+  console.log(z)
 
        
 

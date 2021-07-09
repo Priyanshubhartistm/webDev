@@ -45,47 +45,12 @@
 //  console.log(a)
 //  console.log(b)
 
- //..............................DESTRUCTURING.......................
+ //..............................
 
-//1. for Array............
-//  let a = ["Ram", "shyam", "dhyam"];
-
-//  let [b,c,d] = a;
-//  console.log(a);
-//  console.log(b);
-//  console.log(c);
-//  console.log(d);
-
-//  let a = ["Ram", "shyam", "Rahul","dhyam"];
-
-//  let [b, , , c] = a;
-//  console.log(b);
-//  console.log(c);
-
-// 2. For Objects.....
-
-// let a = {
-//   x: "alpha",
-//   y: "beta",
-// };
-
-// let {x} = a
-// console.log(a); 
-// console.log(x);
+ let a = ["Ram"]
 
 
-let a = {
-  x:{
-    z: "gamma",
-  },
-  y:"beta"
-};
 
-let{
-  x:{z} } = a;
-
-  console.log(a);
-  console.log(z);
 
        
 

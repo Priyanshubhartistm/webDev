@@ -64,29 +64,13 @@
 
 // 2. For Objects.....
 
-// let a = {
-//   x: "alpha",
-//   y: "beta",
-// };
-
-// let {x} = a
-// console.log(a); 
-// console.log(x);
-
-
 let a = {
-  x:{
-    z: "gamma",
-  },
-  y:"beta"
+  x: "alpha",
+  y: "beta",
 };
 
-let{
-  x:{z} } = a;
-
-  console.log(a);
-  console.log(z);
-
+let {x} = a
+log
        
 
 
