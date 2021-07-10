@@ -50,7 +50,7 @@
 
            <button
              onClick={() =>{
-             this.setState({currVal:this.state.currVal-1});
+             this.setState({currVal:this.state.currVal+1});
             }}
 
              >
@@ -62,16 +62,7 @@
    }
 
 
-   ReactDOM.render(<div>
-
-    <Counter/>
-   <hr/>
-    <Counter/>
-    <hr/>
-    <Counter/>
-    <hr/>
-    <Counter/>
-   </div>,document.querySelector("#root"));
+   ReactDOM.render(<Counter/>,document.querySelector("#root"));
 
 
 

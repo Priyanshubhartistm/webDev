@@ -25,56 +25,44 @@
 
   <!-- Render function clear the div where we are going to render(display) our component and then creates a new instance of our component and displays in the given div  -->
   <script type="text/jsx">
+    <!-- Component Using Function -->
 
-   class Counter extends React.Component{
-     state = {
-       currVal:0
-     }
-
-     render(){
+     <!-- let App = function(){
        return(
          <div>
+           <h1>Rupesh</h1>
+           <h3>Kumar</h3>
+           <p> Rupesh is a bad Engineer</p>
 
-          <button
-          onClick={() =>{
-          this.setState({currVal:this.state.currVal+1});
-         }}
+        </div>
+        );
+     }; -->
 
-          >
-          +
-         </button>
+<!-- Component Using class -->
 
+class App extends React.Component {
+  render() {
+    return (
+      <div>
+        <h1>Rupesh</h1>
+        <h3>Kumar</h3>
+        <p> Rupesh is a bad Engineer</p>
 
-           <p> {this.state.currVal} </p>
-
-
-           <button
-             onClick={() =>{
-             this.setState({currVal:this.state.currVal-1});
-            }}
-
-             >
-             -
-            </button>
-         </div>
-       );
-     }
-   }
+     </div>
+    );
+  }
+}
+     
+     
 
 
-   ReactDOM.render(<div>
+     ReactDOM.render(<div>
+       <App/>
+       <App/>
+       <App/>
+     </div>,document.querySelector("#root"));
 
-    <Counter/>
-   <hr/>
-    <Counter/>
-    <hr/>
-    <Counter/>
-    <hr/>
-    <Counter/>
-   </div>,document.querySelector("#root"));
-
-
-
+      
     </script>
 </body>
 
