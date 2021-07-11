@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <p class="reflextion">Example Text</p>
+    <input type="text" class="input" placeholder="1" />
+    <input type="text" class="input" placeholder="2" />
+
+    <script src="https://code.jquery.com/jquery-3.6.0.slim.min.js"
+        integrity="sha256-u7e5khyithlIdTpu22PHhENmPcRdFiHRjhAuHcs05RI=" crossorigin="anonymous"></script>
+
+    <script>
+        //   1. Single List Change
+        // $($(".input")[1]).change(function(){
+        //     console.log("changed");
+        // });
+
+        //  2. Complete List Change
+        // <script> 
+        // $(".input").change(function(){
+        //     console.log("changed");
+        // });
+
+
+        //    $("input").on(".input").change(function () {
+        //         console.log("changed");
+        //     });
+
+
+        $("input").on("input").change(function (e) {
+           $("p").text(e.currentTarget.value);
+        });
+        
+        $(".input").on("keypress", function(e))
+
+
+    </script>
+</body>
+
+</html>
