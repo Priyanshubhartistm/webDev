@@ -120,11 +120,6 @@
     background: #57606f;
     font-weight: bold;
   }
+
+
   
-  #gallery {
-    position: fixed;
-    z-index: 3;
-    bottom: 100px;
-    right: 20px;
-    height: 3rem;
-  }
