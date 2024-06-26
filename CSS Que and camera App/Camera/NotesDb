@@ -1,6 +1,6 @@
 IndexedDB=>
 
-    Database inside your browser (NoSQL) 
+    Database inside your browser (mysql) 
     we dont need to create it 
     SQL => relational Database (Tables and unko relate )
 
